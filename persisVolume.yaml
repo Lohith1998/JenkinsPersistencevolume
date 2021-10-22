@@ -1,14 +1,12 @@
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
-  name: jenkins-pv
+  name: jenkins-claim
   namespace: jenkins
 spec:
-  storageClassName: jenkins-pv
+  storageClassName: local-path
   accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 20Gi
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /data/jenkins-volume/
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
